@@ -252,7 +252,7 @@ footer{background:var(--light);padding:5rem 0 3rem;border-top:1px solid #e8e0e8;
       <span class="serv-title">Conceitos Criativos</span>
       <p class="serv-desc">Criacao de conceitos criativos para campanhas.</p>
     </div>
-    <div class="servico-col reveal" onclick="abrirEmails()" style="cursor:pointer;">
+    <div class="servico-col reveal" onclick="abrirViewer()" style="cursor:pointer;">
       <div class="serv-icon">&#128231;</div>
       <span class="serv-title">E-mail Marketing</span>
       <p class="serv-desc">Planejamento e redacao de e-mails marketing para CRM.</p>
@@ -370,7 +370,7 @@ footer{background:var(--light);padding:5rem 0 3rem;border-top:1px solid #e8e0e8;
   <div class="email-inner">
     <h2 class="section-title reveal">E-mail Marketing</h2>
     <div class="email-grid">
-      <div class="email-card reveal" onclick="window.open('email_apple_tv.html','_blank')" style="cursor:pointer;">
+      <div class="email-card reveal" onclick="abrirViewer(0)" style="cursor:pointer;">
         <div class="email-card-icon">&#128231;</div>
         <div class="email-card-body">
           <span class="email-card-tag">Blink &middot; CRM</span>
@@ -378,7 +378,7 @@ footer{background:var(--light);padding:5rem 0 3rem;border-top:1px solid #e8e0e8;
           <p class="email-card-desc">Campanha de lancamento do combo 600 Mega + Apple TV. E-mail focado em conversao com destaque para o beneficio e CTA direto.</p>
         </div>
       </div>
-      <div class="email-card reveal" onclick="window.open('email_pesadelo.html','_blank')" style="cursor:pointer;">
+      <div class="email-card reveal" onclick="abrirViewer(1)" style="cursor:pointer;">
         <div class="email-card-icon">&#127859;</div>
         <div class="email-card-body">
           <span class="email-card-tag">Blink &middot; Conteudo</span>
@@ -408,6 +408,29 @@ footer{background:var(--light);padding:5rem 0 3rem;border-top:1px solid #e8e0e8;
   </div>
 </footer>
 
+<!-- MODAL VIEWER DE EMAILS -->
+<div id="emailViewer" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.88);flex-direction:column;align-items:center;justify-content:center;">
+  <div style="width:min(640px,95vw);height:90vh;display:flex;flex-direction:column;border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);">
+
+    <!-- Topo do modal -->
+    <div style="background:#1a0d1a;padding:.8rem 1.2rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;border-bottom:1px solid rgba(192,132,252,.2);">
+      <div style="display:flex;gap:.5rem;">
+        <button onclick="trocarEmail(0)" id="tab0" style="font-family:'Poppins',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .9rem;border-radius:20px;border:1px solid #C084FC;background:#C084FC;color:#090505;cursor:pointer;transition:all .2s;">Apple TV + 600 Mega</button>
+        <button onclick="trocarEmail(1)" id="tab1" style="font-family:'Poppins',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .9rem;border-radius:20px;border:1px solid rgba(192,132,252,.4);background:transparent;color:#C084FC;cursor:pointer;transition:all .2s;">Pesadelo na Cozinha</button>
+      </div>
+      <div style="display:flex;align-items:center;gap:.8rem;">
+        <button onclick="emailAnterior()" title="Anterior" style="background:none;border:none;cursor:pointer;color:#C084FC;font-size:1.1rem;padding:.2rem .5rem;opacity:.7;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.7">&#8592;</button>
+        <span id="emailCounter" style="font-family:'Poppins',sans-serif;font-size:.65rem;color:rgba(255,255,255,.4);letter-spacing:.1em;">1 / 2</span>
+        <button onclick="emailProximo()" title="Proximo" style="background:none;border:none;cursor:pointer;color:#C084FC;font-size:1.1rem;padding:.2rem .5rem;opacity:.7;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.7">&#8594;</button>
+        <button onclick="fecharViewer()" style="background:rgba(255,255,255,.08);border:none;cursor:pointer;color:#fff;width:30px;height:30px;border-radius:50%;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:background .2s;" onmouseover="this.style.background='rgba(192,132,252,.3)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">&#10005;</button>
+      </div>
+    </div>
+
+    <!-- iframe -->
+    <iframe id="emailFrame" src="" style="flex:1;border:none;background:#fff;"></iframe>
+  </div>
+</div>
+
 <script>
 const navLinks=document.querySelectorAll('.nav-menu a');
 const sections=document.querySelectorAll('section[id],footer[id]');
@@ -433,10 +456,63 @@ pDots.forEach(function(d){d.addEventListener('click',function(){clearInterval(pT
 function startPort(){pTimer=setInterval(function(){goPort(pIdx+1);},4500);}
 startPort();
 
-function abrirEmails(){
-  window.open('email_apple_tv.html','_blank');
-  window.open('email_pesadelo.html','_blank');
+var emailAtual=0;
+var emails=['email_apple_tv.html','email_pesadelo.html'];
+
+function abrirViewer(idx){
+  emailAtual=idx||0;
+  var v=document.getElementById('emailViewer');
+  v.style.display='flex';
+  document.body.style.overflow='hidden';
+  atualizarViewer();
 }
+
+function fecharViewer(){
+  var v=document.getElementById('emailViewer');
+  v.style.display='none';
+  document.getElementById('emailFrame').src='';
+  document.body.style.overflow='';
+}
+
+function trocarEmail(idx){
+  emailAtual=idx;
+  atualizarViewer();
+}
+
+function emailProximo(){
+  emailAtual=(emailAtual+1)%emails.length;
+  atualizarViewer();
+}
+
+function emailAnterior(){
+  emailAtual=(emailAtual-1+emails.length)%emails.length;
+  atualizarViewer();
+}
+
+function atualizarViewer(){
+  document.getElementById('emailFrame').src=emails[emailAtual];
+  document.getElementById('emailCounter').textContent=(emailAtual+1)+' / '+emails.length;
+  var t0=document.getElementById('tab0');
+  var t1=document.getElementById('tab1');
+  if(emailAtual===0){
+    t0.style.background='#C084FC';t0.style.color='#090505';
+    t1.style.background='transparent';t1.style.color='#C084FC';
+  } else {
+    t1.style.background='#C084FC';t1.style.color='#090505';
+    t0.style.background='transparent';t0.style.color='#C084FC';
+  }
+}
+
+document.getElementById('emailViewer').addEventListener('click',function(e){
+  if(e.target===this)fecharViewer();
+});
+document.addEventListener('keydown',function(e){
+  var v=document.getElementById('emailViewer');
+  if(v.style.display==='none')return;
+  if(e.key==='Escape')fecharViewer();
+  if(e.key==='ArrowRight')emailProximo();
+  if(e.key==='ArrowLeft')emailAnterior();
+});
 
 var obs=new IntersectionObserver(function(entries){
   entries.forEach(function(e){
