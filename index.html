@@ -64,12 +64,14 @@ ul{list-style:none;}
 .sobre-cargo{font-weight:700;font-size:1.3rem;letter-spacing:.04em;margin-top:.4rem;color:var(--dark);}
 .sobre-bio{margin-top:1.4rem;font-size:.9rem;line-height:1.85;color:#555;}
 .sobre-photo{display:flex;justify-content:center;align-items:center;}
-.photo-circle{width:226px;height:226px;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,#3d1c3d,#914591);display:flex;align-items:center;justify-content:center;border:3px solid var(--light);box-shadow:0 1px 3px rgba(0,0,0,.45);font-style:italic;color:rgba(255,255,255,.4);font-size:.85rem;}
+.photo-circle{width:226px;height:226px;border-radius:50%;overflow:hidden;border:3px solid var(--light);box-shadow:0 1px 3px rgba(0,0,0,.45);}
+.photo-circle img{width:100%;height:100%;object-fit:cover;object-position:center top;}
 #servicos{background:var(--dark);padding:4.5rem 0;}
 .servicos-inner{max-width:var(--site-w);margin:0 auto;padding:0 1rem;display:grid;grid-template-columns:repeat(3,1fr);}
-.servico-col{padding:2.5rem 1.5rem;border-right:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;align-items:center;text-align:center;gap:1rem;transition:background .3s;}
+.servico-col{padding:2.5rem 1.5rem;border-right:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;align-items:center;text-align:center;gap:1rem;transition:background .3s;color:inherit;}
 .servico-col:last-child{border-right:none;}
 .servico-col:hover{background:rgba(255,255,255,.03);}
+.servico-col[style*="cursor:pointer"]{cursor:pointer;}
 .serv-icon{width:86px;height:86px;border-radius:50%;background:rgba(145,69,145,.2);border:1px solid rgba(145,69,145,.35);display:flex;align-items:center;justify-content:center;font-size:2rem;transition:background .3s;}
 .servico-col:hover .serv-icon{background:rgba(145,69,145,.42);}
 .serv-title{font-size:.72rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--yellow);}
@@ -195,7 +197,7 @@ footer{background:var(--light);padding:5rem 0 3rem;border-top:1px solid #e8e0e8;
     <button class="slide-btn prev" id="prevBtn" aria-label="Anterior">
       <svg viewBox="0 0 21 41"><path d="M20.3 40.8 0 20.5 20.3.2l.7.7L1.3 20.5 21 40.1z"/></svg>
     </button>
-    <button class="slide-btn next" id="nextBtn" aria-label="Próximo">
+    <button class="slide-btn next" id="nextBtn" aria-label="Proximo">
       <svg viewBox="0 0 21 41" style="transform:scaleX(-1)"><path d="M20.3 40.8 0 20.5 20.3.2l.7.7L1.3 20.5 21 40.1z"/></svg>
     </button>
   </div>
@@ -207,22 +209,22 @@ footer{background:var(--light);padding:5rem 0 3rem;border-top:1px solid #e8e0e8;
 <div class="marquee-wrap">
   <div class="marquee-track">
     <div class="marquee-inner">
-      <span>Jornalismo</span><span class="sep">✦</span>
-      <span>Gestão de Redes Sociais</span><span class="sep">✦</span>
-      <span>Campanhas Comerciais</span><span class="sep">✦</span>
-      <span>E-mail Marketing</span><span class="sep">✦</span>
-      <span>Roteiros para Vídeos</span><span class="sep">✦</span>
-      <span>Textos para Blog</span><span class="sep">✦</span>
-      <span>Análise de Métricas</span><span class="sep">✦</span>
+      <span>Jornalismo</span><span class="sep">&#10022;</span>
+      <span>Gestao de Redes Sociais</span><span class="sep">&#10022;</span>
+      <span>Campanhas Comerciais</span><span class="sep">&#10022;</span>
+      <span>E-mail Marketing</span><span class="sep">&#10022;</span>
+      <span>Roteiros para Videos</span><span class="sep">&#10022;</span>
+      <span>Textos para Blog</span><span class="sep">&#10022;</span>
+      <span>Analise de Metricas</span><span class="sep">&#10022;</span>
     </div>
     <div class="marquee-inner" aria-hidden="true">
-      <span>Jornalismo</span><span class="sep">✦</span>
-      <span>Gestão de Redes Sociais</span><span class="sep">✦</span>
-      <span>Campanhas Comerciais</span><span class="sep">✦</span>
-      <span>E-mail Marketing</span><span class="sep">✦</span>
-      <span>Roteiros para Vídeos</span><span class="sep">✦</span>
-      <span>Textos para Blog</span><span class="sep">✦</span>
-      <span>Análise de Métricas</span><span class="sep">✦</span>
+      <span>Jornalismo</span><span class="sep">&#10022;</span>
+      <span>Gestao de Redes Sociais</span><span class="sep">&#10022;</span>
+      <span>Campanhas Comerciais</span><span class="sep">&#10022;</span>
+      <span>E-mail Marketing</span><span class="sep">&#10022;</span>
+      <span>Roteiros para Videos</span><span class="sep">&#10022;</span>
+      <span>Textos para Blog</span><span class="sep">&#10022;</span>
+      <span>Analise de Metricas</span><span class="sep">&#10022;</span>
     </div>
   </div>
 </div>
@@ -232,11 +234,13 @@ footer{background:var(--light);padding:5rem 0 3rem;border-top:1px solid #e8e0e8;
     <div class="sobre-text reveal">
       <h2><span class="sobre-nome">Laiza Santos</span></h2>
       <h3 class="sobre-cargo">Jornalista</h3>
-      <p class="sobre-bio">Minha carreira é dedicada à produção de conteúdo, com um foco principal na criação e desenvolvimento de materiais envolventes e estratégicos. Minha experiência abrange desde a elaboração de textos criativos e informativos até a gestão de campanhas digitais e a análise de desempenho para otimização de resultados.</p>
-      <p class="sobre-bio" style="margin-top:.8rem;">Seja para blogs, redes sociais, campanhas publicitárias ou estratégias de comunicação interna, meu objetivo é criar conteúdo que inspire, informe e envolva o público.</p>
+      <p class="sobre-bio">Minha carreira e dedicada a producao de conteudo, com um foco principal na criacao e desenvolvimento de materiais envolventes e estrategicos. Minha experiencia abrange desde a elaboracao de textos criativos e informativos ate a gestao de campanhas digitais e a analise de desempenho para otimizacao de resultados.</p>
+      <p class="sobre-bio" style="margin-top:.8rem;">Seja para blogs, redes sociais, campanhas publicitarias ou estrategias de comunicacao interna, meu objetivo e criar conteudo que inspire, informe e envolva o publico.</p>
     </div>
     <div class="sobre-photo reveal">
-      <div class="photo-circle" style="background:none;"><img src="laiza.jpg" alt="Laiza Santos" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;"></div>
+      <div class="photo-circle">
+        <img src="laiza.jpg" alt="Laiza Santos">
+      </div>
     </div>
   </div>
 </section>
@@ -244,69 +248,70 @@ footer{background:var(--light);padding:5rem 0 3rem;border-top:1px solid #e8e0e8;
 <section id="servicos">
   <div class="servicos-inner">
     <div class="servico-col reveal">
-      <div class="serv-icon">✏️</div>
+      <div class="serv-icon">&#9998;</div>
       <span class="serv-title">Conceitos Criativos</span>
-      <p class="serv-desc">Criação de conceitos criativos para campanhas.</p>
+      <p class="serv-desc">Criacao de conceitos criativos para campanhas.</p>
     </div>
-    <div class="servico-col reveal">
-      <div class="serv-icon">📧</div>
+    <div class="servico-col reveal" onclick="abrirEmails()" style="cursor:pointer;">
+      <div class="serv-icon">&#128231;</div>
       <span class="serv-title">E-mail Marketing</span>
-      <p class="serv-desc">Planejamento e redação de e-mails marketing para CRM.</p>
+      <p class="serv-desc">Planejamento e redacao de e-mails marketing para CRM.</p>
+      <span style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(192,132,252,.6);margin-top:.3rem;">ver exemplos &rarr;</span>
     </div>
     <div class="servico-col reveal">
-      <div class="serv-icon">🎬</div>
+      <div class="serv-icon">&#127909;</div>
       <span class="serv-title">Roteiros</span>
-      <p class="serv-desc">Criação de roteiros de vídeos para anúncios e redes sociais.</p>
+      <p class="serv-desc">Criacao de roteiros de videos para anuncios e redes sociais.</p>
     </div>
     <div class="servico-col reveal">
-      <div class="serv-icon">🌐</div>
+      <div class="serv-icon">&#127760;</div>
       <span class="serv-title">Blog &amp; SEO</span>
-      <p class="serv-desc">Redação SEO para blogs, banners e dinâmicas de e-commerce.</p>
+      <p class="serv-desc">Redacao SEO para blogs, banners e dinamicas de e-commerce.</p>
     </div>
     <div class="servico-col reveal">
-      <div class="serv-icon">📱</div>
+      <div class="serv-icon">&#128241;</div>
       <span class="serv-title">Social Media</span>
-      <p class="serv-desc">Planejamento estratégico de conteúdo e redação para redes sociais e anúncios.</p>
+      <p class="serv-desc">Planejamento estrategico de conteudo e redacao para redes sociais e anuncios.</p>
     </div>
     <div class="servico-col reveal">
-      <div class="serv-icon">📊</div>
-      <span class="serv-title">Análise &amp; Eventos</span>
-      <p class="serv-desc">Análise de métricas, briefings e comunicação de eventos.</p>
+      <div class="serv-icon">&#128202;</div>
+      <span class="serv-title">Analise &amp; Eventos</span>
+      <p class="serv-desc">Analise de metricas, briefings e comunicacao de eventos.</p>
     </div>
   </div>
 </section>
 
 <section id="experiencias">
   <div class="exp-inner">
-    <h2 class="section-title reveal">Experiências</h2>
+    <h2 class="section-title reveal">Experiencias</h2>
     <div class="exp-item reveal">
       <div class="exp-meta">
-        <small>Mar 2023 — atual</small>
+        <small>Mar 2023 - atual</small>
         <span class="exp-company">Blink</span>
       </div>
       <div class="exp-content">
         <h3 class="exp-cargo">Analista de Marketing Pleno</h3>
-        <p class="exp-desc">Gerenciamento e produção de conteúdos para redes sociais; Planejamento de Campanhas 360; Roteiro para vídeos; E-mail marketing; Campanhas comerciais; Revisão gramatical; Análise de métricas; Levantamento e formalização de briefings; Produção de conteúdo em eventos externos; Conteúdos e campanhas com influenciadores; Apoio em campanhas internas; Desenvolvimento de comunicação de eventos pré, durante e após.</p>
+        <p class="exp-desc">Gerenciamento e producao de conteudos para redes sociais; Planejamento de Campanhas 360; Roteiro para videos; E-mail marketing; Campanhas comerciais; Revisao gramatical; Analise de metricas; Levantamento e formalizacao de briefings; Producao de conteudo em eventos externos; Conteudos e campanhas com influenciadores; Apoio em campanhas internas; Desenvolvimento de comunicacao de eventos pre, durante e apos.</p>
       </div>
     </div>
     <div class="exp-item reveal">
       <div class="exp-meta">
-        <small>Fev 2023 — Mar 2023</small>
+        <small>Fev 2023 - Mar 2023</small>
         <span class="exp-company">Stoque</span>
       </div>
       <div class="exp-content">
         <h3 class="exp-cargo">Analista de Marketing Digital Jr</h3>
-        <p class="exp-desc">Gerenciamento e produção de conteúdos para redes sociais (foco em geração de leads); Produção e revisão de conteúdos (case, e-book e artigos); E-mail marketing e fluxo de nutrição; Roteiro para vídeos; SEO; Análise de métricas.</p>
+        <p class="exp-desc">Gerenciamento e producao de conteudos para redes sociais (foco em geracao de leads); Producao e revisao de conteudos (case, e-book e artigos); E-mail marketing e fluxo de nutricao; Roteiro para videos; SEO; Analise de metricas.</p>
       </div>
     </div>
     <div class="exp-item reveal">
       <div class="exp-meta">
-        <small>Mar 2022 — Fev 2023</small>
+        <small>Mar 2022 - Fev 2023</small>
         <span class="exp-company">Stoque</span>
       </div>
       <div class="exp-content">
         <h3 class="exp-cargo">Assistente de Marketing Digital</h3>
-        <p class="exp-desc">Gerenciamento e produção de conteúdos para redes sociais; Produção e revisão de conteúdos (case, e-book e artigos); E-mail marketing e fluxo de nutrição.</p>
+        <p class="exp-desc">Gerenciamento e producao de conteudos para redes sociais; Producao e revisao de conteudos (case, e-book e artigos); E-mail marketing e fluxo de nutricao.</p>
       </div>
     </div>
   </div>
@@ -316,37 +321,37 @@ footer{background:var(--light);padding:5rem 0 3rem;border-top:1px solid #e8e0e8;
   <div class="trabalhos-inner">
     <div class="trabalhos-header reveal">
       <h2 class="section-title" style="margin-bottom:0;">Trabalhos</h2>
-      <span class="ver-tudo">ver todos →</span>
+      <span class="ver-tudo">ver todos &rarr;</span>
     </div>
     <div class="port-slideshow" id="portSlider">
       <div class="port-slide active">
         <div class="port-card">
           <div class="port-card-bg" style="background:linear-gradient(135deg,#3d1c3d,#914591);"></div>
-          <div class="port-overlay"><div class="port-info"><h3>Campanhas Comerciais</h3><p>Blink · 2023</p></div></div>
+          <div class="port-overlay"><div class="port-info"><h3>Campanhas Comerciais</h3><p>Blink &middot; 2023</p></div></div>
         </div>
         <div class="port-card">
           <div class="port-card-bg" style="background:linear-gradient(160deg,#6b2d6b,#c97bc9);"></div>
-          <div class="port-overlay"><div class="port-info"><h3>Conteúdo para Redes Sociais</h3><p>Social Media · Blink</p></div></div>
+          <div class="port-overlay"><div class="port-info"><h3>Conteudo para Redes Sociais</h3><p>Social Media &middot; Blink</p></div></div>
         </div>
       </div>
       <div class="port-slide">
         <div class="port-card">
           <div class="port-card-bg" style="background:linear-gradient(160deg,#1c0d1c,#7a3a7a);"></div>
-          <div class="port-overlay"><div class="port-info"><h3>Roteiros para Vídeos</h3><p>Produção · Campanhas</p></div></div>
+          <div class="port-overlay"><div class="port-info"><h3>Roteiros para Videos</h3><p>Producao &middot; Campanhas</p></div></div>
         </div>
         <div class="port-card">
           <div class="port-card-bg" style="background:linear-gradient(160deg,#4a1a4a,#b06ab0);"></div>
-          <div class="port-overlay"><div class="port-info"><h3>Textos para Blog</h3><p>SEO · Stoque</p></div></div>
+          <div class="port-overlay"><div class="port-info"><h3>Textos para Blog</h3><p>SEO &middot; Stoque</p></div></div>
         </div>
       </div>
       <div class="port-slide">
         <div class="port-card">
           <div class="port-card-bg" style="background:linear-gradient(160deg,#2d0d2d,#914591);"></div>
-          <div class="port-overlay"><div class="port-info"><h3>Projeto Especial OOH</h3><p>Ação · Blink Móvel</p></div></div>
+          <div class="port-overlay"><div class="port-info"><h3>Projeto Especial OOH</h3><p>Acao &middot; Blink Movel</p></div></div>
         </div>
         <div class="port-card">
           <div class="port-card-bg" style="background:linear-gradient(160deg,#5a1a5a,#d490d4);"></div>
-          <div class="port-overlay"><div class="port-info"><h3>E-mail Marketing</h3><p>CRM · Nutrição de leads</p></div></div>
+          <div class="port-overlay"><div class="port-info"><h3>E-mail Marketing</h3><p>CRM &middot; Nutricao de leads</p></div></div>
         </div>
       </div>
     </div>
@@ -365,20 +370,20 @@ footer{background:var(--light);padding:5rem 0 3rem;border-top:1px solid #e8e0e8;
   <div class="email-inner">
     <h2 class="section-title reveal">E-mail Marketing</h2>
     <div class="email-grid">
-      <div class="email-card reveal">
-        <div class="email-card-icon">📧</div>
+      <div class="email-card reveal" onclick="window.open('email_apple_tv.html','_blank')" style="cursor:pointer;">
+        <div class="email-card-icon">&#128231;</div>
         <div class="email-card-body">
-          <span class="email-card-tag">Blink · CRM</span>
+          <span class="email-card-tag">Blink &middot; CRM</span>
           <h3 class="email-card-title">Apple TV + 600 Mega</h3>
-          <p class="email-card-desc">Campanha de lançamento do combo 600 Mega + Apple TV. E-mail focado em conversão com destaque para o benefício e CTA direto.</p>
+          <p class="email-card-desc">Campanha de lancamento do combo 600 Mega + Apple TV. E-mail focado em conversao com destaque para o beneficio e CTA direto.</p>
         </div>
       </div>
-      <div class="email-card reveal">
-        <div class="email-card-icon">🍳</div>
+      <div class="email-card reveal" onclick="window.open('email_pesadelo.html','_blank')" style="cursor:pointer;">
+        <div class="email-card-icon">&#127859;</div>
         <div class="email-card-body">
-          <span class="email-card-tag">Blink · Conteúdo</span>
+          <span class="email-card-tag">Blink &middot; Conteudo</span>
           <h3 class="email-card-title">Amiguito Indica: Pesadelo na Cozinha</h3>
-          <p class="email-card-desc">E-mail editorial indicando a nova temporada do programa. Estratégia de engajamento e relacionamento com a base de clientes.</p>
+          <p class="email-card-desc">E-mail editorial indicando a nova temporada do programa. Estrategia de engajamento e relacionamento com a base de clientes.</p>
         </div>
       </div>
     </div>
@@ -394,42 +399,51 @@ footer{background:var(--light);padding:5rem 0 3rem;border-top:1px solid #e8e0e8;
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <span class="hl">(31) 9 8714-7242</span>
     </div>
-    <p class="footer-local">Floramar, Belo Horizonte — MG</p>
+    <p class="footer-local">Floramar, Belo Horizonte - MG</p>
     <div class="footer-social">
       <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-badge" title="LinkedIn">in</a>
       <a href="#" class="social-badge" title="Instagram">ig</a>
     </div>
-    <p class="footer-copy">© 2025 · Laiza Santos · Jornalista &amp; Analista de Marketing</p>
+    <p class="footer-copy">&copy; 2025 &middot; Laiza Santos &middot; Jornalista &amp; Analista de Marketing</p>
   </div>
 </footer>
 
 <script>
 const navLinks=document.querySelectorAll('.nav-menu a');
 const sections=document.querySelectorAll('section[id],footer[id]');
-window.addEventListener('scroll',()=>{
-  let cur='';
-  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
-  navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+window.addEventListener('scroll',function(){
+  var cur='';
+  sections.forEach(function(s){if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+  navLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
 },{passive:true});
 
-const heroPairs=document.querySelectorAll('.slide-pair');
-let hIdx=0,hTimer;
+var heroPairs=document.querySelectorAll('.slide-pair');
+var hIdx=0,hTimer;
 function goHero(n){heroPairs[hIdx].classList.remove('active');hIdx=(n+heroPairs.length)%heroPairs.length;heroPairs[hIdx].classList.add('active');}
-document.getElementById('prevBtn').addEventListener('click',()=>{clearInterval(hTimer);goHero(hIdx-1);startHero();});
-document.getElementById('nextBtn').addEventListener('click',()=>{clearInterval(hTimer);goHero(hIdx+1);startHero();});
-function startHero(){hTimer=setInterval(()=>goHero(hIdx+1),4000);}
+document.getElementById('prevBtn').addEventListener('click',function(){clearInterval(hTimer);goHero(hIdx-1);startHero();});
+document.getElementById('nextBtn').addEventListener('click',function(){clearInterval(hTimer);goHero(hIdx+1);startHero();});
+function startHero(){hTimer=setInterval(function(){goHero(hIdx+1);},4000);}
 startHero();
 
-const pSlides=document.querySelectorAll('.port-slide');
-const pDots=document.querySelectorAll('.port-dot');
-let pIdx=0,pTimer;
+var pSlides=document.querySelectorAll('.port-slide');
+var pDots=document.querySelectorAll('.port-dot');
+var pIdx=0,pTimer;
 function goPort(n){pSlides[pIdx].classList.remove('active');pDots[pIdx].classList.remove('active');pIdx=(n+pSlides.length)%pSlides.length;pSlides[pIdx].classList.add('active');pDots[pIdx].classList.add('active');}
-pDots.forEach(d=>{d.addEventListener('click',()=>{clearInterval(pTimer);goPort(+d.dataset.p);startPort();});});
-function startPort(){pTimer=setInterval(()=>goPort(pIdx+1),4500);}
+pDots.forEach(function(d){d.addEventListener('click',function(){clearInterval(pTimer);goPort(+d.dataset.p);startPort();});});
+function startPort(){pTimer=setInterval(function(){goPort(pIdx+1);},4500);}
 startPort();
 
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.15});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function abrirEmails(){
+  window.open('email_apple_tv.html','_blank');
+  window.open('email_pesadelo.html','_blank');
+}
+
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+  });
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
 </script>
 </body>
 </html>
